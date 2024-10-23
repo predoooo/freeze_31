@@ -22,7 +22,21 @@
  }
  else
  {
-   header("location:index_admin.php");
+   $linha =  mysqli_fetch_assoc($dados);
+   $hash = $linha["senha_usuario"];
+   
+   $retorno = password_verify($senha_ussuario,$hash);
+
+   if ($retorno)
+   {
+    header("location:index_admin.php");
+   }
+   else 
+   {
+    echo "<h1>Senha inválida!</h1>";
+   }
+   
+ 
  }
  ?>   
 </body>
